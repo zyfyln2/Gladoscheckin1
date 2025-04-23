@@ -16,6 +16,9 @@ jobs:
   build:
     name: Glados checkin
     runs-on: ubuntu-latest
+    permissions:
+        actions: write
+    
     strategy:
       matrix:
         python-version: [3.8]
@@ -40,7 +43,7 @@ jobs:
         COOKIES: ${{ secrets.COOKIES }}
 
     - name: keep alive
-      uses: liskin/gh-workflow-keepalive@v1 # using the workflow with default settings
+      uses: liskin/gh-workflow-keepalive@v1
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@v2
       with:
